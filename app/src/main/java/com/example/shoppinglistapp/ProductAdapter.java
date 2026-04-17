@@ -37,7 +37,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ContactV
 
         holder.tvProductName.setText(currentProduct.getName());
         holder.tvQuantity.setText(currentProduct.getQuantity());
-        holder.tvCategory.setText(currentProduct.getCategory());
+        holder.tvCategory.setText("Kategoria: " + currentProduct.getCategory());
 
         holder.itemView.setOnClickListener(v -> {
             if (deleteListener != null) {
