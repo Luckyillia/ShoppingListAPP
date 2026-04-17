@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ShoppingListAPP</string>
+    <string name="add_button">DODAJ</string>
+    <string name="clear_button">WYCZYŚĆ LISTĘ</string>
+    <string name="product_name_hint">Wpisz nazwę produktu...</string>
+    <string name="quantity_hint">Ilość</string>
+    <string name="category_label">Kategoria:</string>
+    <string name="delete_confirm">Czy na pewno usunąć wszystkie produkty?</string>
+    <string name="yes">TAK</string>
+    <string name="no">ANULUJ</string>
+
+    <string-array name="product_categories">
+        <item>Warzywa</item>
+        <item>Owoce</item>
+        <item>Nabiał</item>
+        <item>Mięso</item>
+        <item>Napoje</item>
+        <item>Piekarnia</item>
+        <item>Inne</item>
+    </string-array>
+</resources>

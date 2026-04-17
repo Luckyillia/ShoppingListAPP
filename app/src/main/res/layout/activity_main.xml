@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+    <!-- Nagłówek -->
+    <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lista Zakupów"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- FORMULARZ DODAWANIA -->
+
+    <!-- Nazwa produktu -->
+    <EditText
+            android:id="@+id/etProductName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/product_name_hint"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Ilość -->
+    <EditText
+            android:id="@+id/etProductQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/quantity_hint"
+            android:inputType="number"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/etProductName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Kategoria label -->
+    <TextView
+            android:id="@+id/tvCategoryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category_label"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/etProductQuantity"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Spinner kategorii -->
+    <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/product_categories"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/tvCategoryLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Przycisk DODAJ -->
+    <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/add_button"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/buttonGreen"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/spinnerCategory"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProducts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/btnAdd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnClear" />
+
+    <!-- Przycisk Wyczyść -->
+    <Button
+            android:id="@+id/btnClear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_button"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/buttonRed"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
