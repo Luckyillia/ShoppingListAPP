@@ -3,51 +3,49 @@ package com.example.shoppinglistapp;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ContactViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
-    private List<Product> productList;
-    private OnContactDeleteListener deleteListener;
+    private final List<Product>    productList;
+    private final OnDeleteListener deleteListener;
 
-    public interface OnContactDeleteListener {
-        void onContactDelete(long id);
+    public interface OnDeleteListener {
+        void onDelete(long id);
     }
 
-    public ProductAdapter(List<Product> productList, OnContactDeleteListener deleteListener) {
-        this.productList = productList;
+    public ProductAdapter(List<Product> productList, OnDeleteListener deleteListener) {
+        this.productList    = productList;
         this.deleteListener = deleteListener;
     }
 
     @NonNull
     @Override
-    public ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product, parent, false);
-        return new ContactViewHolder(view);
+    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_product, parent, false);
+        return new ProductViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
-        Product currentProduct = productList.get(position);
+    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+        Product p = productList.get(position);
 
-        holder.tvProductName.setText(currentProduct.getName());
-        holder.tvQuantity.setText(currentProduct.getQuantity());
-        holder.tvCategory.setText("Kategoria: " + currentProduct.getCategory());
+        holder.tvProductName.setText(p.getName());
+        holder.tvQuantity.setText(p.getQuantityString()); // NIE p.getQuantity() – crash!
+        holder.tvCategory.setText("Kategoria: " + p.getCategory());
 
-        holder.itemView.setOnClickListener(v -> {
+        // Klik tylko na przycisku Usuń – nie na całym wierszu
+        holder.btnDelete.setOnClickListener(v -> {
             if (deleteListener != null) {
-                deleteListener.onContactDelete(currentProduct.getId());
-                Toast.makeText(v.getContext(),
-                        "Usunieto: " + currentProduct.getName(),
-                        Toast.LENGTH_SHORT).show();
+                deleteListener.onDelete(p.getId());
             }
         });
-
     }
 
     @Override
@@ -55,16 +53,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ContactV
         return productList.size();
     }
 
-    public static class ContactViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvProductName;
-        public TextView tvQuantity;
-        public TextView tvCategory;
+    public static class ProductViewHolder extends RecyclerView.ViewHolder {
+        public final TextView tvProductName;
+        public final TextView tvQuantity;
+        public final TextView tvCategory;
+        public final Button   btnDelete;
 
-        public ContactViewHolder(@NonNull View itemView) {
+        public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             tvProductName = itemView.findViewById(R.id.tvProductName);
-            tvQuantity = itemView.findViewById(R.id.tvQuantity);
-            tvCategory = itemView.findViewById(R.id.tvCategory);
+            tvQuantity    = itemView.findViewById(R.id.tvQuantity);
+            tvCategory    = itemView.findViewById(R.id.tvCategory);
+            btnDelete     = itemView.findViewById(R.id.btnDelete);
         }
     }
 }

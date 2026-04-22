@@ -13,19 +13,14 @@ public class Product {
         this.category = category;
     }
 
-    public long getId() {
-        return id;
-    }
+    public long getId() { return id; }
+    public String getName() { return name; }
+    public int getQuantity() { return quantity; }
+    public String getCategory() { return category; }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public int getQuantity() {
-        return quantity;
+    // WAŻNE: setText(int) szuka R.string.<id> i powoduje crash RuntimeException!
+    // Zawsze używaj tej metody zamiast getQuantity() w adapterze.
+    public String getQuantityString() {
+        return "Ilość: " + quantity;
     }
 }

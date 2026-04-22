@@ -17,8 +17,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- FORMULARZ DODAWANIA -->
-
     <!-- Nazwa produktu -->
     <EditText
             android:id="@+id/etProductName"
@@ -42,7 +40,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Kategoria label -->
+    <!-- Etykieta kategorii -->
     <TextView
             android:id="@+id/tvCategoryLabel"
             android:layout_width="wrap_content"
@@ -76,6 +74,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Komunikat gdy lista jest pusta -->
+    <TextView
+            android:id="@+id/tvEmptyMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lista zakupów jest pusta"
+            android:textSize="16sp"
+            android:textColor="#999999"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/btnAdd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnClear" />
+
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProducts"
@@ -87,7 +99,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/btnClear" />
 
-    <!-- Przycisk Wyczyść -->
+    <!-- Przycisk WYCZYŚĆ LISTĘ -->
     <Button
             android:id="@+id/btnClear"
             android:layout_width="0dp"
